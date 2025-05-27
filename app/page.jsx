@@ -13,7 +13,7 @@ import emailjs from '@emailjs/browser';
 import profileImage from '../public/profile.jpg';
 import Image from 'next/image';
 import { profiles } from './data/coding';
-
+import SkillsSection from './data/SkillsSection';
 import { FaGraduationCap } from 'react-icons/fa';
 
 
@@ -272,29 +272,9 @@ export default function Home() {
 
 
       {/* Skills Section */}
-<section id="skills" className="px-6 py-16 bg-[#121212] text-center">
-        <h3 className="text-3xl font-bold mb-12 text-white">Technical Skills</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
-          {/* Languages */}
-          
-          <motion.div whileHover={{ scale: 1.05 }} className="bg-[#1e1e2e] p-6 rounded-lg shadow-md border border-purple-500 text-left">
-            <div className="flex items-center gap-3 mb-3">
-              <AiOutlineCode className="text-3xl text-yellow-400" />
-              <h4 className="text-xl font-semibold text-white">Languages</h4>
-            </div>
-            <p className="text-gray-300">Java, Python,C, HTML, CSS, JavaScript</p>
-          </motion.div>
 
-          {/* Databases */}
-          <motion.div whileHover={{ scale: 1.05 }} className="bg-[#1e1e2e] p-6 rounded-lg shadow-md border border-purple-500 text-left">
-            <div className="flex items-center gap-3 mb-3">
-              <BiSolidServer className="text-3xl text-blue-400" />
-              <h4 className="text-xl font-semibold text-white">Databases</h4>
-            </div>
-            <p className="text-gray-300">MySQL, MongoDB</p>
-          </motion.div>
-        </div>
-      </section>
+
+        <SkillsSection />
 
       {/* Events Section */}
       <section id="events" className="py-20 px-4 sm:px-8 md:px-16 lg:px-32 xl:px-48 bg-[#0b0a1f] text-white">
@@ -443,7 +423,7 @@ export default function Home() {
             <input
               type="text"
               name="name"
-              placeholder="Your name"
+              placeholder="Enter You Name"
               className="w-full px-4 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-purple-600"
               required
             />
@@ -453,7 +433,7 @@ export default function Home() {
             <input
               type="email"
               name="email"
-              placeholder="Your email"
+              placeholder="example@gmail.com"
               className="w-full px-4 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-purple-600"
               required
             />
@@ -463,7 +443,7 @@ export default function Home() {
             <textarea
               name="message"
               rows="4"
-              placeholder="Your message"
+              placeholder="Want to Ask Something?"
               className="w-full px-4 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-purple-600"
               required
             ></textarea>
