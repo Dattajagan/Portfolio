@@ -15,7 +15,8 @@ import Image from 'next/image';
 import { profiles } from './data/coding';
 import SkillsSection from './data/SkillsSection';
 import { FaGraduationCap } from 'react-icons/fa';
-
+import { useTheme } from 'next-themes';
+import { FaSun, FaMoon } from 'react-icons/fa';
 
 import { SiLeetcode, SiGeeksforgeeks, SiHackerrank } from 'react-icons/si';
 import Link from 'next/link';
@@ -23,11 +24,6 @@ import Link from 'next/link';
 
 
 export default function Home() {
-  const [darkMode, setDarkMode] = useState(true);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', darkMode);
-  }, [darkMode]);
   const sendEmail = (e) => {
     e.preventDefault();
     emailjs
@@ -57,7 +53,7 @@ export default function Home() {
       transition={{ duration: 1 }}
     >
       {/* Header */}
-      <header className="p-6 flex justify-between items-center sticky top-0 bg-white dark:bg-[#0f0c29] z-50 shadow">
+      <header className="p-6 flex justify-between items-center sticky top-0 bg-[#f8fafc] dark:bg-[#0f0c29] z-50 shadow">
         <h1 className="text-3xl font-bold text-purple-600">Datta</h1>
         <nav className="space-x-6">
           <a href="#home" className="hover:text-purple-500 dark:hover:text-purple-400">Home</a>
@@ -65,9 +61,7 @@ export default function Home() {
           <a href="#projects" className="hover:text-purple-500 dark:hover:text-purple-400">Projects</a>
           <a href="#skills" className="hover:text-purple-500 dark:hover:text-purple-400">Skills</a>
           <a href="#contact" className="hover:text-purple-500 dark:hover:text-purple-400">Contact</a>
-          <button onClick={() => setDarkMode(!darkMode)} className="ml-4 px-3 py-1 border border-purple-400 rounded-md hover:bg-purple-200 dark:hover:bg-purple-800">
-            {darkMode ? 'Light Mode' : 'Dark Mode'}
-          </button>
+        
         </nav>
       </header>
 
@@ -152,31 +146,31 @@ export default function Home() {
 
         {/* RIGHT SIDE - TRAITS */}
         <div className="grid grid-cols-1 gap-4">
-          {[{
-            icon: <FaCode className="mr-2 animate-bounce" />, title: 'Clean Coder', description: 'I write code that is simple, readable, and maintainable.', delay: 0.2
-          }, {
-            icon: <FaBrain className="mr-2 animate-spin-slow" />, title: 'Problem Solver', description: 'I enjoy finding efficient solutions to technical challenges.', delay: 0.4
-          }, {
-            icon: <FaBolt className="mr-2 animate-wiggle" />, title: 'Fast Learner', description: 'I adapt quickly to new technologies and frameworks.', delay: 0.6
-          }, {
-            icon: <FaSearch className="mr-2 animate-pulse" />, title: 'Self-Guided Explorer', description: 'I explore and experiment independently to deepen my understanding.', delay: 0.8
-          }].map(({ icon, title, description, delay }, idx) => (
-            <motion.div
-              key={idx}
-              className="bg-[#141022] border border-purple-500 p-4 rounded-md shadow-md hover:shadow-purple-500/40"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay, duration: 0.6, ease: 'easeInOut' }}
-              whileHover={{ scale: 1.06, y: -4, transition: { duration: 0.3 } }}
-            >
-              <div className="flex items-center text-purple-400 font-semibold mb-2">
-                {icon} {title}
-              </div>
-              <p className="text-gray-300 text-sm">{description}</p>
-            </motion.div>
-          ))}
+            {[{
+              icon: <FaCode className="mr-2 animate-bounce" />, title: 'Clean Coder', description: 'I write code that is simple, readable, and maintainable.', delay: 0.2
+            }, {
+              icon: <FaBrain className="mr-2 animate-spin-slow" />, title: 'Problem Solver', description: 'I enjoy finding efficient solutions to technical challenges.', delay: 0.4
+            }, {
+              icon: <FaBolt className="mr-2 animate-wiggle" />, title: 'Fast Learner', description: 'I adapt quickly to new technologies and frameworks.', delay: 0.6
+            }, {
+              icon: <FaSearch className="mr-2 animate-pulse" />, title: 'Self-Guided Explorer', description: 'I explore and experiment independently to deepen my understanding.', delay: 0.8
+            }].map(({ icon, title, description, delay }, idx) => (
+              <motion.div
+                key={idx}
+                className="bg-[#141022] border border-purple-500 p-4 rounded-md shadow-md hover:shadow-purple-500/40"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay, duration: 0.6, ease: 'easeInOut' }}
+                whileHover={{ scale: 1.06, y: -4, transition: { duration: 0.3 } }}
+              >
+                <div className="flex items-center text-purple-400 font-semibold mb-2">
+                  {icon} {title}
+                </div>
+                <p className="text-gray-300 text-sm">{description}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </div>
     </section>
 
     
