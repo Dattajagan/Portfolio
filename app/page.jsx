@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Typewriter } from 'react-simple-typewriter';
-import { FaGithub, FaLinkedin, FaPaperPlane } from 'react-icons/fa';
+import {FaInstagram, FaGithub, FaLinkedin, FaTwitter, FaPaperPlane } from 'react-icons/fa';
 import { FaEnvelope, FaCode, FaLightbulb, FaBook } from 'react-icons/fa';
 import { FaBrain, FaBolt, FaSearch, FaBookOpen } from 'react-icons/fa';
 import { events } from './data/events';
@@ -71,52 +71,113 @@ export default function Home() {
       className="min-h-screen px-6 py-24 bg-gradient-to-r from-[#0f0c29] via-[#302b63] to-[#24243e] text-white flex flex-col lg:flex-row items-center justify-between"
     >
       {/* Left Side: Headings */}
-      <div className="lg:w-1/2 text-center lg:text-left">
-        <h1 className="text-5xl lg:text-6xl font-extrabold leading-tight">
-          Crafting <span className="text-purple-400"> Smart</span>
-          <br />
-          <span className="text-purple-400">& Impactful</span> Digital Experiences
-        </h1>
-        <p className="mt-6 text-lg text-gray-300">
-          I’m passionate about developing digital experiences that are efficient,
-          intuitive, and purposeful. Let’s craft something impactful together.
-        </p>
-        <div className="mt-8 text-2xl text-purple-300 font-semibold">
-          <Typewriter
-            words={[
-              'Web Developer',
-              'Frontend Enthusiast',
-              'Problem Solver',
-              'Tech Explorer'
-            ]}
-            loop
-            cursor
-            cursorStyle="_"
-            typeSpeed={70}
-            deleteSpeed={50}
-            delaySpeed={1500}
-          />
-        </div>
-      </div>
-
-      {/* Right Side: Profile Image */}
-      <div className="lg:w-1/2 mt-10 lg:mt-0 flex justify-center">
-  <motion.div
-    initial={{ opacity: 0, scale: 0.9 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    transition={{ duration: 0.8, ease: 'easeOut' }}
-    whileHover={{ rotate: [0, 1.5, -1.5, 0], boxShadow: '0 0 20px 4px rgba(168, 85, 247, 0.6)' }}
-    className="rounded-xl border-4 border-purple-500 overflow-hidden shadow-xl"
+<motion.div
+  initial={{ opacity: 0, x: -50 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 1 }}
+  className="lg:w-1/2 text-center lg:text-left"
+>
+  <motion.h1
+    className="text-5xl lg:text-6xl font-extrabold leading-tight"
+    initial={{ opacity: 0, y: -20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.2, duration: 0.8 }}
   >
-    <Image
-      src={profileImage}
-      alt="Profile Picture"
-      className="w-[300px] h-[300px] object-cover"
-      priority
+    Crafting <motion.span
+      whileHover={{ textShadow: "0px 0px 8px rgb(168, 85, 247)" }}
+      className="text-purple-400"
+    >
+      Smart
+    </motion.span>
+    <br />
+    <motion.span
+      whileHover={{ textShadow: "0px 0px 8px rgb(168, 85, 247)" }}
+      className="text-purple-400"
+    >
+      & Impactful
+    </motion.span>{" "}
+    Digital Experiences
+  </motion.h1>
+
+  <motion.p
+    className="mt-6 text-lg text-gray-300"
+    initial={{ opacity: 0, y: 10 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.4, duration: 0.8 }}
+  >
+    I’m passionate about developing digital experiences that are efficient,
+    intuitive, and purposeful. Let’s craft something impactful together.
+  </motion.p>
+
+  <motion.div
+    className="mt-8 text-2xl text-purple-300 font-semibold"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: 0.6, duration: 0.8 }}
+  >
+    <Typewriter
+      words={[
+        "Web Developer",
+        "Frontend Enthusiast",
+        "Problem Solver",
+        "Tech Explorer",
+      ]}
+      loop
+      cursor
+      cursorStyle="_"
+      typeSpeed={70}
+      deleteSpeed={50}
+      delaySpeed={1500}
     />
   </motion.div>
+</motion.div>
+
+
+      {/* Right Side: Animated Profile Image */}
+<div className="lg:w-1/2 mt-10 lg:mt-0 flex justify-center items-center">
+  <motion.div
+    initial={{ y: 0, rotate: 0 }}
+    animate={{
+      y: [0, -10, 0],
+      boxShadow: [
+        "0 0 0px #a855f7",
+        "0 0 20px #a855f7",
+        "0 0 0px #a855f7",
+      ],
+    }}
+    whileHover={{
+      rotate: [0, 3, -3, 0],
+      scale: 1.03,
+      boxShadow: "0 0 25px 8px rgba(168, 85, 247, 0.7)",
+    }}
+    transition={{
+      duration: 4,
+      repeat: Infinity,
+      repeatType: "loop",
+      ease: "easeInOut",
+    }}
+    className="relative rounded-[2rem] border-[6px] border-purple-500 p-2 bg-white overflow-hidden group"
+  >
+    {/* Shine overlay */}
+    <div className="absolute inset-0 z-20 pointer-events-none">
+      <div className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shine" />
+    </div>
+
+    <div className="rounded-[1.5rem] border-[6px] border-white overflow-hidden shadow-xl z-10">
+      <Image
+        src={profileImage}
+        alt="Profile Picture"
+        className="w-[350px] h-[350px] object-cover rounded-[1.5rem]"
+        priority
+      />
+    </div>
+  </motion.div>
 </div>
+
+
+
     </section>
+    
 
       {/* About section placeholder */}
 
@@ -386,24 +447,24 @@ export default function Home() {
               dattajaganpenumudi@gmail.com
             </a>
           </div>
-          <div className="flex space-x-4">
-            <a
-              href="https://github.com/Dattajagan"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-gray-800 hover:bg-purple-600 text-white px-4 py-2 rounded-md flex items-center"
-            >
-              <FaGithub className="mr-2" /> GitHub
-            </a>
-            <a
-              href="https://linkedin.com/in/penumudi-datta-jagan-mohan-199b7b256"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-gray-800 hover:bg-purple-600 text-white px-4 py-2 rounded-md flex items-center"
-            >
-              <FaLinkedin className="mr-2" /> LinkedIn
-            </a>
-          </div>
+          {/* Social Links */}
+      <section className="bg-transparent text-white py-10 flex flex-col items-center">
+        <h3 className="text-lg font-semibold mb-4">Connect With Me</h3>
+        <div className="flex justify-center space-x-6">
+          <a href="https://linkedin.com/in/penumudi-datta-jagan-mohan-199b7b256" target="_blank" rel="noopener noreferrer" className="bg-[#121212] hover:bg-purple-600 p-3 rounded-full text-purple-400 text-xl">
+            <FaLinkedin />
+          </a>
+          <a href="https://github.com/Dattajagan" target="_blank" rel="noopener noreferrer" className="bg-[#121212] hover:bg-purple-600 p-3 rounded-full text-purple-400 text-xl">
+            <FaGithub />
+          </a>
+          <a href="https://instagram.com/datta_official_04" target="_blank" rel="noopener noreferrer" className="bg-[#121212] hover:bg-purple-600 p-3 rounded-full text-purple-400 text-xl">
+            <FaInstagram />
+          </a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="bg-[#121212] hover:bg-purple-600 p-3 rounded-full text-purple-400 text-xl">
+            <FaTwitter />
+          </a>
+        </div>
+      </section>
         </motion.div>
 
         {/* Contact Form */}
