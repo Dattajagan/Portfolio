@@ -54,7 +54,16 @@ export default function Home() {
     >
       {/* Header */}
       <header className="p-6 flex justify-between items-center sticky top-0 bg-[#f8fafc] dark:bg-[#0f0c29] z-50 shadow">
-        <h1 className="text-3xl font-bold text-purple-600">Datta</h1>
+        <motion.span
+  whileHover={{ scale: 1.05, textShadow: "0px 0px 12px #a855f7" }}
+  transition={{ type: "spring", stiffness: 300 }}
+  className="text-xl font-semibold text-purple-500"
+>
+  Datta Jagan
+</motion.span>
+
+
+
         <nav className="space-x-6">
           <a href="#home" className="hover:text-purple-500 dark:hover:text-purple-400">Home</a>
           <a href="#about" className="hover:text-purple-500 dark:hover:text-purple-400">About</a>
@@ -72,63 +81,100 @@ export default function Home() {
     >
       {/* Left Side: Headings */}
 <motion.div
-  initial={{ opacity: 0, x: -50 }}
-  animate={{ opacity: 1, x: 0 }}
-  transition={{ duration: 1 }}
+  initial="hidden"
+  animate="visible"
+  variants={{
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  }}
   className="lg:w-1/2 text-center lg:text-left"
 >
+  {/* Heading */}
   <motion.h1
-    className="text-5xl lg:text-6xl font-extrabold leading-tight"
-    initial={{ opacity: 0, y: -20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ delay: 0.2, duration: 0.8 }}
+    className="text-5xl lg:text-6xl font-extrabold leading-tight space-y-2"
   >
-    Crafting <motion.span
-      whileHover={{ textShadow: "0px 0px 8px rgb(168, 85, 247)" }}
-      className="text-purple-400"
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
     >
-      Smart
-    </motion.span>
-    <br />
-    <motion.span
-      whileHover={{ textShadow: "0px 0px 8px rgb(168, 85, 247)" }}
-      className="text-purple-400"
+      Crafting{" "}
+      <motion.span
+        whileHover={{
+          textShadow: "0px 0px 12px #a855f7",
+          scale: 1.05,
+        }}
+        className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-red-400"
+      >
+        Smart
+      </motion.span>
+    </motion.div>
+
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.2, duration: 0.8 }}
     >
-      & Impactful
-    </motion.span>{" "}
-    Digital Experiences
+      <motion.span
+        whileHover={{
+          textShadow: "0px 0px 12px #a855f7",
+          scale: 1.05,
+        }}
+        className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-500"
+      >
+        & Impactful
+      </motion.span>{" "}
+      Digital Experiences
+    </motion.div>
   </motion.h1>
 
+  {/* Paragraph */}
   <motion.p
     className="mt-6 text-lg text-gray-300"
-    initial={{ opacity: 0, y: 10 }}
+    initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
-    transition={{ delay: 0.4, duration: 0.8 }}
+    transition={{ delay: 0.6, duration: 0.8 }}
   >
     I’m passionate about developing digital experiences that are efficient,
     intuitive, and purposeful. Let’s craft something impactful together.
   </motion.p>
 
+  {/* Typewriter */}
   <motion.div
-    className="mt-8 text-2xl text-purple-300 font-semibold"
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ delay: 0.6, duration: 0.8 }}
+    className="mt-8 text-2xl font-semibold text-purple-300"
+    initial={{ opacity: 0, y: 10 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.9, duration: 1 }}
   >
-    <Typewriter
-      words={[
-        "Web Developer",
-        "Frontend Enthusiast",
-        "Problem Solver",
-        "Tech Explorer",
-      ]}
-      loop
-      cursor
-      cursorStyle="_"
-      typeSpeed={70}
-      deleteSpeed={50}
-      delaySpeed={1500}
-    />
+    <motion.div
+      animate={{
+        scale: [1, 1.05, 1],
+        y: [0, -4, 0],
+      }}
+      transition={{
+        duration: 2,
+        repeat: Infinity,
+      }}
+    >
+      <Typewriter
+        words={[
+          "Web Developer",
+          "Frontend Enthusiast",
+          "Problem Solver",
+          "Tech Explorer",
+        ]}
+        loop
+        cursor
+        cursorStyle="_"
+        typeSpeed={100}
+        deleteSpeed={100}
+        delaySpeed={1500}
+      />
+    </motion.div>
   </motion.div>
 </motion.div>
 
