@@ -506,7 +506,7 @@ export default function Home() {
           <a href="https://instagram.com/datta_official_04" target="_blank" rel="noopener noreferrer" className="bg-[#121212] hover:bg-purple-600 p-3 rounded-full text-purple-400 text-xl">
             <FaInstagram />
           </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="bg-[#121212] hover:bg-purple-600 p-3 rounded-full text-purple-400 text-xl">
+          <a href="https://x.com/datta_jagan04" target="_blank" rel="noopener noreferrer" className="bg-[#121212] hover:bg-purple-600 p-3 rounded-full text-purple-400 text-xl">
             <FaTwitter />
           </a>
         </div>
