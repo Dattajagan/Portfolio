@@ -375,7 +375,7 @@ export default function Home() {
   <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
     {[
       {
-        title: 'Harmonizing Emotions & Climate',
+        title: 'Harmonizing Emotions & Climate Using Music Personalization',
         image: '/harmonize.jpg',
         stack: ['Python', 'TensorFlow', 'OpenCV', 'Spotify API', 'Keras'],
         desc: 'Detects mood and recommends Spotify playlists based on weather and emotion.',
