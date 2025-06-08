@@ -94,9 +94,7 @@ export default function Home() {
   className="lg:w-1/2 text-center lg:text-left"
 >
   {/* Heading */}
-  <motion.h1
-    className="text-5xl lg:text-6xl font-extrabold leading-tight space-y-2"
-  >
+  <motion.h1 className="text-5xl lg:text-6xl font-extrabold leading-tight space-y-2">
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
@@ -176,7 +174,67 @@ export default function Home() {
       />
     </motion.div>
   </motion.div>
+
+  {/* Buttons Below Typewriter */}
+<motion.div
+  className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 1.2, duration: 0.8 }}
+>
+  {/* Download Resume Button */}
+  <motion.a
+    whileHover={{ scale: 1.05, boxShadow: "0px 0px 12px #d946ef" }}
+    whileTap={{ scale: 0.95 }}
+    href="/Datta_Resume.pdf"
+    download
+    className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-xl font-semibold shadow-lg transition-all duration-300 flex items-center gap-2"
+  >
+    Download Resume
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-5 h-5"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"
+      />
+    </svg>
+  </motion.a>
+
+  {/* Get in Touch Button */}
+  <motion.a
+    whileHover={{ scale: 1.05, boxShadow: "0px 0px 12px #9333ea" }}
+    whileTap={{ scale: 0.95 }}
+    href="#contact"
+    className="border border-purple-400 text-purple-300 hover:bg-purple-600 hover:text-white px-6 py-3 rounded-xl font-semibold shadow-lg transition-all duration-300 flex items-center gap-2"
+  >
+    Get in Touch
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-5 h-5"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M17 8l4 4m0 0l-4 4m4-4H3"
+      />
+    </svg>
+  </motion.a>
 </motion.div>
+
+</motion.div>
+
+
 
 
       {/* Right Side: Animated Profile Image */}
@@ -312,14 +370,14 @@ export default function Home() {
 
 
       {/* Projects Section */}
-      <section id="projects" className="px-6 py-16 bg-gradient-to-b from-[#1c1c2b] to-[#121212] text-white text-center">
+<section id="projects" className="px-6 py-16 bg-gradient-to-b from-[#1c1c2b] to-[#121212] text-white text-center">
   <h3 className="text-4xl font-bold mb-12">Projects</h3>
   <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
     {[
       {
         title: 'Harmonizing Emotions & Climate',
         image: '/harmonize.jpg',
-        stack: ['Python', 'TensorFlow', 'OpenCV'],
+        stack: ['Python', 'TensorFlow', 'OpenCV', 'Spotify API', 'Keras'],
         desc: 'Detects mood and recommends Spotify playlists based on weather and emotion.',
         repo: 'https://github.com/Dattajagan/Harmonizing-Emotions-and-Climate-using-Music-Personalization',
         live: '#'
@@ -327,7 +385,7 @@ export default function Home() {
       {
         title: 'TODO',
         image: '/todo.jpg',
-        stack: ['Java', 'SQL', 'HTML', 'CSS'],
+        stack: ['Java', 'SQL', 'HTML', 'CSS', 'JavaScript'],
         desc: 'A lightweight to-do manager using Java and SQL backend.',
         repo: 'https://github.com/Dattajagan/java-todo-app',
         live: '#'
@@ -335,41 +393,80 @@ export default function Home() {
       {
         title: 'Auto WhatsApp Messenger',
         image: 'whatsapp.jpg',
-        stack: ['Python', 'PyWhatKit', 'Tkinter'],
+        stack: ['Python', 'PyWhatKit', 'Tkinter', 'Pandas'],
         desc: 'GUI app to schedule bulk WhatsApp messages using CSV.',
         repo: 'https://github.com/Dattajagan/Auto-WhatsApp-Messager',
         live: '#'
       },
-
       {
         title: 'Chat With PDF',
         image: 'chatpdf.jpg',
         stack: ['Python', 'PyMuPDF', 'Ollama', 'LLaMA'],
-        desc: 'GUI app to schedule bulk WhatsApp messages using CSV.',
+        desc: 'Query any PDF using local LLM without internet.',
         repo: 'https://github.com/Dattajagan/Chat-With-PDF',
         live: '#'
       }
-
     ].map((proj, i) => (
-      <div key={i} className="bg-[#1e1e2f] rounded-xl shadow-xl overflow-hidden hover:shadow-purple-500/40 transition-shadow">
-        <img src={proj.image} alt={proj.title} className="w-full h-48 object-cover" />
+      <div
+        key={i}
+        className="group bg-[#1e1e2f] rounded-xl shadow-xl overflow-hidden relative transform transition duration-500 hover:scale-105 hover:shadow-purple-500/40"
+      >
+        {/* Image */}
+        <div className="overflow-hidden">
+          <img
+            src={proj.image}
+            alt={proj.title}
+            className="w-full h-48 object-cover transform group-hover:scale-110 transition duration-500"
+          />
+        </div>
+
+        {/* Text Content */}
         <div className="p-6 text-left">
-          <h4 className="text-xl font-bold mb-2">{proj.title}</h4>
+          <h4 className="text-xl font-bold mb-2 group-hover:text-purple-400 transition">
+            {proj.title}
+          </h4>
+
           <div className="flex flex-wrap gap-2 mb-2">
             {proj.stack.map((tech, idx) => (
-              <span key={idx} className="text-sm bg-purple-600/30 text-purple-300 px-2 py-1 rounded-md">{tech}</span>
+              <span
+                key={idx}
+                className="text-sm bg-purple-600/30 text-purple-300 px-2 py-1 rounded-md"
+              >
+                {tech}
+              </span>
             ))}
           </div>
+
           <p className="text-gray-400 mb-4">{proj.desc}</p>
-          <div className="flex space-x-4 text-sm">
-            
-            <a href={proj.repo} target="_blank" className="text-purple-400 hover:underline">View Project</a>
+
+          {/* Hover Buttons */}
+          <div className="opacity-0 group-hover:opacity-100 flex space-x-4 text-sm transition duration-500">
+            <a
+              href={proj.repo}
+              target="_blank"
+              className="px-3 py-1 rounded-md bg-purple-600 text-white hover:bg-purple-500 transition"
+            >
+              View Details
+            </a>
+            {proj.live !== '#' && (
+              <a
+                href={proj.live}
+                target="_blank"
+                className="px-3 py-1 rounded-md bg-purple-600 text-white hover:bg-purple-500 transition"
+              >
+                Live
+              </a>
+            )}
           </div>
         </div>
+
+        {/* Glow Border */}
+        <div className="absolute inset-0 rounded-xl border border-purple-500 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none"></div>
       </div>
     ))}
   </div>
 </section>
+
 
 
       {/* Skills Section */}
@@ -544,7 +641,7 @@ export default function Home() {
             <textarea
               name="message"
               rows="4"
-              placeholder="Want to Ask Something?"
+              placeholder="Want to Ask Anything?"
               className="w-full px-4 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-purple-600"
               required
             ></textarea>
