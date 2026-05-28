@@ -391,6 +391,14 @@ export default function Home() {
         live: '#'
       },
       {
+        title: 'Tic-Tac-Toe Game',
+        image: '/Tic tac toe.png',
+        stack: ['HTML', 'CSS', 'JavaScript'],
+        desc: 'Interactive Tic-Tac-Toe game with smart win detection and responsive design.',
+        repo: 'https://github.com/Dattajagan/TIC---TAC--TOE',
+        live: '#'
+      },
+      {
         title: 'Auto WhatsApp Messenger',
         image: 'whatsapp.jpg',
         stack: ['Python', 'PyWhatKit', 'Tkinter', 'Pandas'],
